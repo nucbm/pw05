@@ -29,7 +29,6 @@ const getHashedPassword = (password) => {
 
 const getUrlImg = (emailAddress, options ={} ) => {
     console.log(emailAddress);
-    //var emailAddrss = 'costea.c@gmail.com';
     const defaultImage = options.defaultImage || 'identicon';
     const emailHash = crypto.createHash('md5').update(emailAddress).digest('hex');
     return `https://www.gravatar.com/avatar/${emailHash}?d=${defaultImage}`;
@@ -138,14 +137,8 @@ app.post('/register', (req, res) => {
 
 app.get('/protected', (req, res) => {
     if (req.user) {
-        const urlimg = getUrlImg(req.user);
-
-        if (req.session.views) {
-            req.session.views++
-          } else {
-            req.session.views = 1
-          }
-        res.render('protected', {mailuser: req.user,  viewsno : req.session.views, myavatar: urlimg});
+        // console.log(req.user);
+        res.render('protected', {mailuser: req.user});
     } else {
         res.render('login', {
             message: 'Please login to continue',
