@@ -1,0 +1,11 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Protected Page</a>
+</nav>
+
+<div>
+    <h4>This page is only visible to {{mailuser}}<!--logged in users --></h4>
+    <img src='{{myavatar}}'>
+    <p>the number of accesses in this session: {{viewsno}}</p>
+    
+    <a href='/logout'>Log out</a>
+</div>
